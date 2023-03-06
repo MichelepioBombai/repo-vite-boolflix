@@ -1,39 +1,40 @@
 <script>
 import axios from "axios";
 import { store } from "../data/store";
+import { series } from "../data/store";
 
 export default {
   data() {
     return {
       store,
+      series,
       searchQuery: "",
     };
   },
 
   methods: {
-    searchMovies() {
+    searchMoviesAndSerieTv() {
       axios
-        .get("https://api.themoviedb.org/3/search/movie", {
-          params: {
-            api_key: "59e2418b4425b86d44b365d940853ff8",
-            query: this.searchQuery,
-          },
-        })
-        .then((response) => {
-          store.movies = response.data.results;
-        });
-    },
-    searchSerietv() {
-      axios
-        .get("https://api.themoviedb.org/3/search/tv", {
-          params: {
-            api_key: "59e2418b4425b86d44b365d940853ff8",
-            query: this.searchQuery,
-          },
-        })
-        .then((response) => {
-          store.serieTv = response.data.results;
-        });
+        .all([
+          axios.get("https://api.themoviedb.org/3/search/movie", {
+            params: {
+              api_key: "59e2418b4425b86d44b365d940853ff8",
+              query: this.searchQuery,
+            },
+          }),
+          axios.get("https://api.themoviedb.org/3/search/tv", {
+            params: {
+              api_key: "59e2418b4425b86d44b365d940853ff8",
+              query: this.searchQuery,
+            },
+          }),
+        ])
+        .then(
+          axios.spread((moviesResponse, serieTvResponse) => {
+            store.movies = moviesResponse.data.results;
+            series.serieTv = serieTvResponse.data.results;
+          })
+        );
     },
   },
 };
@@ -41,7 +42,7 @@ export default {
 
 <template>
   <h1>Movie Search App</h1>
-  <form @submit.prevent="searchMovies">
+  <form @submit.prevent="searchMoviesAndSerieTv">
     <label for="searchInput">Search for a movie/serie-tv:</label>
     <input type="text" id="searchInput" v-model="searchQuery" />
     <button type="submit">Search</button>

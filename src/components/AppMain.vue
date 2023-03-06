@@ -28,7 +28,7 @@ export default {
     </div>
     <div>
       <TvSerieData
-        v-for="serie in store.series"
+        v-for="serie in store.seriesTv"
         :key="serie.id"
         :title="serie.name"
         :OriginalTitle="serie.original_name"
