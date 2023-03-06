@@ -1,9 +1,15 @@
-<script setup>
-import HelloWorld from "./components/HelloWorld.vue";
+<script>
+import AppMain from "./components/AppMain.vue";
+import AppHeader from "./components/AppHeader.vue";
+
+export default {
+  components: { AppMain, AppHeader },
+};
 </script>
 
 <template>
-  <HelloWorld />
+  <AppHeader />
+  <AppMain />
 </template>
 
 <style scoped></style>
