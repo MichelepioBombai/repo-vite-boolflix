@@ -23,6 +23,18 @@ export default {
           store.movies = response.data.results;
         });
     },
+    searchSerietv() {
+      axios
+        .get("https://api.themoviedb.org/3/search/tv", {
+          params: {
+            api_key: "59e2418b4425b86d44b365d940853ff8",
+            query: this.searchQuery,
+          },
+        })
+        .then((response) => {
+          store.serieTv = response.data.results;
+        });
+    },
   },
 };
 </script>

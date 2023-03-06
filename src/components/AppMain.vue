@@ -15,8 +15,8 @@ export default {
 !
 <template>
   <div>
+    <h2>Results:</h2>
     <div>
-      <h2>Results:</h2>
       <MovieData
         v-for="movie in store.movies"
         :key="movie.id"
@@ -24,6 +24,16 @@ export default {
         :OriginalTitle="movie.original_title"
         :lang="movie.original_language"
         :vote="movie.vote_average"
+      />
+    </div>
+    <div>
+      <TvSerieData
+        v-for="serie in store.series"
+        :key="serie.id"
+        :title="serie.name"
+        :OriginalTitle="serie.original_name"
+        :lang="serie.original_language"
+        :vote="serie.vote_average"
       />
     </div>
   </div>
