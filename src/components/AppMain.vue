@@ -1,30 +1,32 @@
 <script>
 import MovieData from "./MovieData.vue";
 import TvSerieData from "./TvSerieData.vue";
+import { store } from "../data/store";
 
 export default {
-  components: { MovieData, TvSerieData },
-  props: {
-    title: String,
-    OriginalTitle: String,
-    lang: String,
-    vote: String,
+  data() {
+    return {
+      store,
+    };
   },
+  components: { MovieData, TvSerieData },
 };
 </script>
 !
 <template>
-  <ul>
-    <h2>Results:</h2>
-    <li>
-      <div class="infoMovies">
-        <h3>{{ title }}</h3>
-        <p>{{ OriginalTitle }}</p>
-        <p>{{ lang }}</p>
-        <p>{{ vote }}</p>
-      </div>
-    </li>
-  </ul>
+  <div>
+    <div>
+      <h2>Results:</h2>
+      <MovieData
+        v-for="movie in store.movies"
+        :key="movie.id"
+        :title="movie.title"
+        :OriginalTitle="movie.original_title"
+        :lang="movie.original_language"
+        :vote="movie.vote_average"
+      />
+    </div>
+  </div>
 
   <MovieData />
   <TvSerieData />

@@ -1,10 +1,11 @@
 <script>
 import axios from "axios";
+import { store } from "../data/store";
 
 export default {
   data() {
     return {
-      movies: [],
+      store,
       searchQuery: "",
     };
   },
@@ -19,14 +20,13 @@ export default {
           },
         })
         .then((response) => {
-          this.movies = response.data.results;
+          store.movies = response.data.results;
         });
     },
   },
 };
 </script>
 
-!
 <template>
   <h1>Movie Search App</h1>
   <form @submit.prevent="searchMovies">

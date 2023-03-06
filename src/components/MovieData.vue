@@ -1,20 +1,25 @@
 <script>
-export default {};
+export default {
+  props: {
+    title: String,
+    OriginalTitle: String,
+    lang: String,
+    vote: String,
+  },
+};
 </script>
 
 <template>
-  <div>
-    <div>
-      <AppMain
-        v-for="movie in movies"
-        :key="movie.id"
-        :title="movie.title"
-        :OriginalTitle="movie.original_title"
-        :lang="movie.original_language"
-        :vote="movie.vote_average"
-      />
-    </div>
-  </div>
+  <ul>
+    <li>
+      <div class="infoMovies">
+        <h3>{{ title }}</h3>
+        <p>{{ OriginalTitle }}</p>
+        <p>{{ lang }}</p>
+        <p>{{ vote }}</p>
+      </div>
+    </li>
+  </ul>
 </template>
 
 <style lang="scss" scoped></style>
