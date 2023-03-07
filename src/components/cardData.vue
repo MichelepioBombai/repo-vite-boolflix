@@ -17,7 +17,7 @@ export default {
     },
 
     getImage(poster) {
-      return "https://image.tmdb.org/t/p/" + poster;
+      return "https://image.tmdb.org/t/p/w300" + poster;
     },
   },
 };
@@ -40,6 +40,7 @@ export default {
         <p>{{ OriginalTitle }}</p>
         <p><img :src="getFlag(lang)" /></p>
         <p>{{ vote }}</p>
+        <img :src="getImage(poster)" alt="" />
       </div>
     </li>
   </ul>
