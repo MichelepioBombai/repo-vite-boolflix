@@ -4,7 +4,7 @@ export default {
     title: String,
     OriginalTitle: String,
     lang: String,
-    vote: String,
+    vote: Number,
   },
 };
 </script>

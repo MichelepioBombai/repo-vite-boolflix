@@ -15,8 +15,8 @@ export default {
 !
 <template>
   <div>
-    <h2>Results:</h2>
     <div>
+      <h2>Films:</h2>
       <MovieData
         v-for="movie in store.movies"
         :key="movie.id"
@@ -27,8 +27,9 @@ export default {
       />
     </div>
     <div>
+      <h2>Serie-Tv:</h2>
       <TvSerieData
-        v-for="serie in store.seriesTv"
+        v-for="serie in store.serieTv"
         :key="serie.id"
         :title="serie.name"
         :OriginalTitle="serie.original_name"
