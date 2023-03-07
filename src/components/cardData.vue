@@ -5,6 +5,7 @@ export default {
     OriginalTitle: String,
     lang: String,
     vote: Number,
+    poster: String,
   },
 
   methods: {
@@ -26,6 +27,16 @@ export default {
         <p>{{ OriginalTitle }}</p>
         <p><img :src="getFlag(lang)" /></p>
         <p>{{ vote }}</p>
+        <img :src="poster" alt="" />
+      </div>
+    </li>
+    <li>
+      <div class="infoSerietv">
+        <h3>{{ title }}</h3>
+        <p>{{ OriginalTitle }}</p>
+        <p><img :src="getFlag(lang)" /></p>
+        <p>{{ vote }}</p>
+        <img :src="poster" alt="" />
       </div>
     </li>
   </ul>

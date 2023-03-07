@@ -1,6 +1,6 @@
 <script>
-import MovieData from "./MovieData.vue";
-import TvSerieData from "./TvSerieData.vue";
+import cardData from "./cardData.vue";
+
 import { store } from "../data/store";
 
 export default {
@@ -9,7 +9,7 @@ export default {
       store,
     };
   },
-  components: { MovieData, TvSerieData },
+  components: { cardData },
 };
 </script>
 !
@@ -17,30 +17,32 @@ export default {
   <div>
     <div>
       <h2>Films:</h2>
-      <MovieData
+      <cardData
         v-for="movie in store.movies"
         :key="movie.id"
         :title="movie.title"
-        :OriginalTitle="movie.original_title"
-        :lang="movie.original_language"
-        :vote="movie.vote_average"
+        :OriginalTitle="movie.OriginalTitle"
+        :lang="movie.lang"
+        :vote="movie.vote"
+        :poster="movie.poster"
       />
     </div>
     <div>
       <h2>Serie-Tv:</h2>
-      <TvSerieData
+      <cardData
         v-for="serie in store.serieTv"
         :key="serie.id"
-        :title="serie.name"
-        :OriginalTitle="serie.original_name"
-        :lang="serie.original_language"
-        :vote="serie.vote_average"
+        :title="serie.title"
+        :OriginalTitle="serie.OriginalTitle"
+        :lang="serie.lang"
+        :vote="serie.vote"
+        :poster="serie.poster"
       />
     </div>
   </div>
 
-  <MovieData />
-  <TvSerieData />
+  <!-- <MovieData />
+  <TvSerieData /> -->
 </template>
 
 <style></style>
