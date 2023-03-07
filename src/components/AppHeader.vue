@@ -65,11 +65,24 @@ export default {
 </script>
 
 <template>
-  <h1>Boolflix</h1>
-  <form @submit.prevent="searchMoviesAndSerieTv">
-    <label for="searchInput">Search for a movie/serie-tv:</label>
-    <input type="text" id="searchInput" v-model="searchQuery" />
-    <button type="submit">Search</button>
-  </form>
+  <nav class="navbar bg-light">
+    <div class="container-fluid">
+      <a class="navbar-brand">Boolflix</a>
+      <form
+        class="d-flex"
+        role="search"
+        @submit.prevent="searchMoviesAndSerieTv"
+      >
+        <input
+          class="form-control me-2"
+          type="search"
+          placeholder="Search"
+          aria-label="Search"
+          v-model="searchQuery"
+        />
+        <button class="btn btn-outline-success" type="submit">Search</button>
+      </form>
+    </div>
+  </nav>
 </template>
 <style lang="scss" scoped></style>

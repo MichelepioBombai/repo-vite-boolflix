@@ -15,7 +15,7 @@ export default {
 !
 <template>
   <div>
-    <div>
+    <div v-if="store.movies.length">
       <h2>Films:</h2>
       <cardData
         v-for="movie in store.movies"
@@ -27,7 +27,7 @@ export default {
         :poster="movie.poster"
       />
     </div>
-    <div>
+    <div v-if="store.serieTv.length">
       <h2>Serie-Tv:</h2>
       <cardData
         v-for="serie in store.serieTv"
@@ -39,6 +39,7 @@ export default {
         :poster="serie.poster"
       />
     </div>
+    <h2 v-else>inizia la ricerca...</h2>
   </div>
 
   <!-- <MovieData />
