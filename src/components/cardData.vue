@@ -15,6 +15,10 @@ export default {
       if (country == "EN") return "https://flagsapi.com/GB/flat/64.png";
       return "https://flagsapi.com/" + country + "/flat/64.png";
     },
+
+    getImage(poster) {
+      return "https://image.tmdb.org/t/p/" + poster;
+    },
   },
 };
 </script>
@@ -27,7 +31,7 @@ export default {
         <p>{{ OriginalTitle }}</p>
         <p><img :src="getFlag(lang)" /></p>
         <p>{{ vote }}</p>
-        <img :src="poster" alt="" />
+        <img :src="getImage(poster)" alt="" />
       </div>
     </li>
     <li>
@@ -36,7 +40,6 @@ export default {
         <p>{{ OriginalTitle }}</p>
         <p><img :src="getFlag(lang)" /></p>
         <p>{{ vote }}</p>
-        <img :src="poster" alt="" />
       </div>
     </li>
   </ul>
