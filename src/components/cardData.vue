@@ -6,6 +6,7 @@ export default {
     lang: String,
     vote: Number,
     poster: String,
+    info: String,
   },
 
   methods: {
@@ -17,33 +18,42 @@ export default {
     },
 
     getImage(poster) {
-      return "https://image.tmdb.org/t/p/w300" + poster;
+      return "https://image.tmdb.org/t/p/w342" + poster;
     },
   },
 };
 </script>
 
 <template>
-  <ul>
-    <li>
-      <div class="infoMovies">
-        <h3>{{ title }}</h3>
-        <p>{{ OriginalTitle }}</p>
-        <p><img :src="getFlag(lang)" /></p>
-        <p>{{ vote }}</p>
-        <img :src="getImage(poster)" alt="" />
-      </div>
-    </li>
-    <li>
-      <div class="infoSerietv">
-        <h3>{{ title }}</h3>
-        <p>{{ OriginalTitle }}</p>
-        <p><img :src="getFlag(lang)" /></p>
-        <p>{{ vote }}</p>
-        <img :src="getImage(poster)" alt="" />
-      </div>
-    </li>
-  </ul>
+  <div class="cardInfo col pt-4">
+    <img :src="getImage(poster)" alt="" />
+    <div class="details">
+      <h3>
+        Titolo:
+        {{ title }}
+      </h3>
+      <p>Titolo originale: {{ OriginalTitle }}</p>
+      <p>Paese:<img class="flag" :src="getFlag(lang)" /></p>
+      <p>Voto: {{ vote }}</p>
+      <p>Overview: {{ info }}</p>
+    </div>
+  </div>
 </template>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.details {
+  color: white;
+  margin-top: 20px;
+  width: 342px;
+  background-color: black;
+  height: 516px;
+  overflow: auto;
+}
+
+img {
+  height: 512px;
+}
+.flag {
+  height: 100%;
+}
+</style>
